@@ -11,6 +11,7 @@ import FlutterMacOS
 class FlutterWindowDelegate: NSObject, NSWindowDelegate {
     private var methodChannel: FlutterMethodChannel?
     private var fullScreenPresentationOptions: NSApplication.PresentationOptions?
+    public var shouldPreventClose: Bool = false
     
     public static func create(window: NSWindow, methodChannel: FlutterMethodChannel) -> FlutterWindowDelegate {
         let newDelegate = FlutterWindowDelegate()
@@ -142,7 +143,7 @@ class FlutterWindowDelegate: NSObject, NSWindowDelegate {
 
     func windowShouldClose(_ sender: NSWindow) -> Bool {
         methodChannel!.invokeMethod("windowShouldClose", arguments: nil)
-        return true
+        return shouldPreventClose ? false : true
     }
 
     func windowWillClose(_ notification: Notification) {

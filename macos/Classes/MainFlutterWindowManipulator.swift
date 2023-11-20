@@ -668,4 +668,8 @@ public class MainFlutterWindowManipulator {
         
         mainFlutterWindow!.setFrame(newFrame, display: true, animate: animate)
     }
+
+    public static func setShouldPreventClose(_ newValue: Bool) {
+        mainFlutterWindowDelegate?.shouldPreventClose = newValue
+    }
 }

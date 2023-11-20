@@ -484,6 +484,12 @@ public class MacOSWindowUtilsPlugin: NSObject, FlutterPlugin {
             result(true)
             break
             
+        case "setShouldPreventClose":
+            if let newValue = args["newValue"] as? Bool {
+                MainFlutterWindowManipulator.setShouldPreventClose(newValue)
+            }
+            break
+            
         default:
             result(FlutterMethodNotImplemented)
             break

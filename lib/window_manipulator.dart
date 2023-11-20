@@ -742,4 +742,10 @@ class WindowManipulator {
       'animate': animate,
     });
   }
+
+  static Future<void> setShouldPreventClose(bool newValue) async {
+    await _windowManipulatorMethodChannel.invokeMethod('setShouldPreventClose', {
+      'newValue': newValue,
+    });
+  }
 }
